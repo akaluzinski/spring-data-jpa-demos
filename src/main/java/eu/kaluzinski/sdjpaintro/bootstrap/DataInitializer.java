@@ -16,14 +16,21 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        Book book1 = new Book("Data Driven Design", "3213", "Somepublished");
-        Book savedBook = bookRepository.save(book1);
+        Book bookDDD = new Book("Domain Driven Design", "123", "RandomHouse");
 
-        Book book2 = new Book("Spring in action", "3333", "SomeAnotherPublisher");
-        Book savedBook2 = bookRepository.save(book2);
+        System.out.println("Id: " + bookDDD.getId() );
+
+        Book savedDDD = bookRepository.save(bookDDD);
+
+        System.out.println("Id: " + savedDDD.getId() );
+
+        Book bookSIA = new Book("Spring In Action", "234234", "Oriely");
+        Book savedSIA = bookRepository.save(bookSIA);
 
         bookRepository.findAll().forEach(book -> {
-            System.out.println(book);
+            System.out.println("Book Id: " + book.getId());
+            System.out.println("Book Title: " + book.getTitle());
         });
+
     }
 }

@@ -1,24 +1,28 @@
 package eu.kaluzinski.sdjpaintro.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.util.Objects;
 
-@Getter
-@Setter
 @Entity
 @NoArgsConstructor
+@Getter
+@Setter
 public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    private String title;
+    private String isbn;
+    private String publisher;
 
     public Book(String title, String isbn, String publisher) {
         this.title = title;
@@ -35,6 +39,7 @@ public class Book {
 
         return Objects.equals(id, book.id);
     }
+
     @Override
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
@@ -49,8 +54,4 @@ public class Book {
                 ", publisher='" + publisher + '\'' +
                 '}';
     }
-
-    private String title;
-    private String isbn;
-    private String publisher;
 }
