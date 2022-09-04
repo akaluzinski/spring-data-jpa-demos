@@ -1,11 +1,13 @@
 package eu.kaluzinski.sdjpaintro;
 
+import eu.kaluzinski.sdjpaintro.configuration.RunProfile;
 import eu.kaluzinski.sdjpaintro.domain.Book;
 import eu.kaluzinski.sdjpaintro.repositories.BookRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Profile;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @DataJpaTest
+@Profile({ RunProfile.LOCAL, RunProfile.DEFAULT })
 @ComponentScan(basePackageClasses = { eu.kaluzinski.sdjpaintro.bootstrap.DataInitializer.class })
 public class BookRepositoryTest {
 

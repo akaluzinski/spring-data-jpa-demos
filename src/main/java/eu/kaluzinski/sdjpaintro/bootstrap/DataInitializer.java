@@ -1,10 +1,13 @@
 package eu.kaluzinski.sdjpaintro.bootstrap;
 
+import eu.kaluzinski.sdjpaintro.configuration.RunProfile;
 import eu.kaluzinski.sdjpaintro.domain.Book;
 import eu.kaluzinski.sdjpaintro.repositories.BookRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+@Profile({ RunProfile.LOCAL, RunProfile.DEFAULT })
 @Component
 public class DataInitializer implements CommandLineRunner {
 
@@ -16,6 +19,7 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        bookRepository.deleteAll();
         Book bookDDD = new Book("Domain Driven Design", "123", "RandomHouse");
 
         System.out.println("Id: " + bookDDD.getId() );
