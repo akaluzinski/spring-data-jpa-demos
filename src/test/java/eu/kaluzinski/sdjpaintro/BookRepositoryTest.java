@@ -33,8 +33,8 @@ public class BookRepositoryTest {
     void shouldAddBooksToRepository() {
         assertThat(bookRepository.count()).isEqualTo(2L);
         final List<Book> books = Arrays.asList(
-                new Book("Some test book", "3490098", "222"),
-                new Book("Some nother test book", "34900918", "222")
+                new Book("Some test book", "3490098", "222", null),
+                new Book("Some nother test book", "34900918", "222", null)
         );
         bookRepository.saveAll(books);
         assertThat(bookRepository.count()).isEqualTo(4L);
